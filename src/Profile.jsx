@@ -1,11 +1,21 @@
-function Profile() {
+export function Profile() {
   return (
     <img
-      src="https://images.pexels.com/photos/29726820/pexels-photo-29726820/free-photo-of-woman-enjoying-nature-in-ha-giang-forest.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-      alt="girl wearing red sweater"
-      className="image"
+      src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcRKu513Evx_f3zbM6EYXI6Sm7X9Om5Fx2z5LPI3v6AqCmrCcqHG-DuBehn7O8b4G7vfLr7OoVjyagXEldE"
+      alt="Joe"
+      height="200px"
+      width="auto"
     />
   );
 }
 
-export default Profile;
+export function Lex() {
+  return (
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Lex_Fridman_teaching_at_MIT_in_2018.png/220px-Lex_Fridman_teaching_at_MIT_in_2018.png"
+      alt="Lex"
+      height="200px"
+      width="auto"
+    />
+  );
+}
