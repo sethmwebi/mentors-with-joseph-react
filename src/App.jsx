@@ -240,26 +240,148 @@ import Avatar from "./Avatar";
 //     />
 //   );
 // }
-function Card({ children }) {
-  return <div className="card">{children}</div>;
-}
+// function Card({ children }) {
+//   return <div className="card">{children}</div>;
+// }
+//
+// export default function App() {
+//   return (
+//     <>
+//       <Card>
+//         <Avatar
+//           person={{
+//             name: "Jovan",
+//             imgUrl:
+//               "https://images.pexels.com/photos/21772278/pexels-photo-21772278/free-photo-of-man-in-hat-and-sweater-standing-in-botanical-garden.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+//           }}
+//           size={400}
+//         />
+//       </Card>
+//       <Card>
+//         <h1>Joe Rogan</h1>
+//       </Card>
+//     </>
+//   );
+// }
+// import { useState } from "react";
+// import Clock from "./Clock";
+//
+// const App = () => {
+//   const [color, setColor] = useState("rebbecapurple");
+//
+//   return (
+//     <div>
+//       <div>
+//         <p>Pick a color:</p>
+//         <select onChange={(e) => setColor(e.target.value)}>
+//           <option value="rebeccapurple">Rebeccapurple</option>
+//           <option value="lightcoral">Lightcoral</option>
+//           <option value="midnightblue">Midnightblue</option>
+//         </select>
+//       </div>
+//       <Clock color={color} time={new Date().toTimeString()} />
+//     </div>
+//   );
+// };
+//
+// export default App;
+// function Item({ name, isPacked }) {
+//   if (isPacked) return <li>{name} ✅</li>;
+//   return <li>{name}</li>;
+// }
+//
 
-export default function App() {
-  return (
-    <>
-      <Card>
-        <Avatar
-          person={{
-            name: "Jovan",
-            imgUrl:
-              "https://images.pexels.com/photos/21772278/pexels-photo-21772278/free-photo-of-man-in-hat-and-sweater-standing-in-botanical-garden.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-          }}
-          size={400}
-        />
-      </Card>
-      <Card>
-        <h1>Joe Rogan</h1>
-      </Card>
-    </>
-  );
-}
+// function Item({ name, isPacked }) {
+//   return <li>{isPacked ? name + "✅" : name}</li>;
+// }
+//
+
+// function Item({ name, isPacked }) {
+//   return <li>{isPacked ? <del>{name + " ✅"}</del> : name}</li>;
+// }
+
+// function Item({ name, isPacked }) {
+//   return (
+//     <li>
+//       {name} {isPacked && " ✅"}
+//     </li>
+//   );
+// }
+// function Item({ name, isPacked }) {
+//   return (
+//     <li>
+//       {name} {!isPacked && "❌"}
+//     </li>
+//   );
+// }
+//
+// export default function PackagingList() {
+//   return (
+//     <section>
+//       <h1>Seth's packaging list</h1>
+//       <ul>
+//         <Item name="Space Suit" isPacked={true} />
+//         <Item isPacked={true} name="Helmet with a golden leaf" />
+//         <Item isPacked={false} name="Photo of Joe Rogan" />
+//       </ul>
+//     </section>
+//   );
+// }
+
+// function Item({ name, importance }) {
+//   return (
+//     <li className="item">
+//       {name} {importance > 0 && <em>(importance: {importance})</em>}
+//     </li>
+//   );
+// }
+//
+// export default function PackingList() {
+//   return (
+//     <section>
+//       <h1>Sally Ride's Packing List</h1>
+//       <ul>
+//         <Item importance={9} name="Space suit" />
+//         <Item importance={0} name="Helmet with a golden leaf" />
+//         <Item importance={6} name="Photo of Tam" />
+//       </ul>
+//     </section>
+//   );
+// }
+
+// function Drink({ name }) {
+//   let partOfPlant, caffeineContent, age;
+//
+//   if (name === "tea") {
+//     partOfPlant = "leaf";
+//     caffeineContent = "15–70 mg/cup";
+//     age = "4,000+ years";
+//   } else {
+//     partOfPlant = "bean";
+//     caffeineContent = "80–185 mg/cup";
+//     age = "1,000+ years";
+//   }
+//
+//   return (
+//     <section>
+//       <h1>{name}</h1>
+//       <dl>
+//         <dt>Part of plant</dt>
+//         <dd>{partOfPlant}</dd>
+//         <dt>Caffeine content</dt>
+//         <dd>{caffeineContent}</dd>
+//         <dt>Age</dt>
+//         <dd>{age}</dd>
+//       </dl>
+//     </section>
+//   );
+// }
+//
+// export default function DrinkList() {
+//   return (
+//     <div>
+//       <Drink name="tea" />
+//       <Drink name="coffee" />
+//     </div>
+//   );
+// }
