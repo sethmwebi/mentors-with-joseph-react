@@ -385,3 +385,87 @@ import Avatar from "./Avatar";
 //     </div>
 //   );
 // }
+/*Rendering lists*/
+// const podcasts = [
+//   "Joe Rogan Experience",
+//   "Candance Owens",
+//   "Triggernometry",
+//   "Lynn Ngugi Show",
+//   "Iko nini podcast",
+// ];
+//
+// import React from "react";
+//
+// const App = () => {
+//   return (
+//     <ul>
+//       {podcasts.map((podcast, index) => {
+//         return (
+//           <li key={index}>
+//             {podcast} {index}
+//           </li>
+//         );
+//       })}
+//     </ul>
+//   );
+// };
+//
+// export default App;
+const people = [
+  {
+    id: 0,
+    name: "Creola Katherine Johnson",
+    profession: "mathematician",
+  },
+  {
+    id: 1,
+    name: "Mario José Molina-Pasquel Henríquez",
+    profession: "chemist",
+  },
+  {
+    id: 2,
+    name: "Mohammad Abdus Salam",
+    profession: "physicist",
+  },
+  {
+    id: 3,
+    name: "Percy Lavon Julian",
+    profession: "chemist",
+  },
+  {
+    id: 4,
+    name: "Subrahmanyan Chandrasekhar",
+    profession: "astrophysicist",
+  },
+];
+
+export default function App() {
+  return (
+    <div>
+      {people
+        .filter((person) => person.profession != "chemist")
+        .map((person, index) => {
+          return (
+            <div key={index} style={{ display: "flex" }}>
+              <p>{person.name} : </p>
+              <p>{person.profession}</p>
+            </div>
+          );
+        })}
+    </div>
+  );
+}
+
+// export default function App() {
+//   return (
+//     <ol>
+//       {people.map((person, index) => {
+//         return (
+//           <div style={{ display: "flex", gap: "10px" }}>
+//             <li key={index}>{person.name}</li> <span>{person.profession}</span>
+//           </div>
+//         );
+//       })}
+//     </ol>
+//   );
+// }
