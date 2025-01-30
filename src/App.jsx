@@ -411,50 +411,50 @@ import Avatar from "./Avatar";
 // };
 //
 // export default App;
-const people = [
-  {
-    id: 0,
-    name: "Creola Katherine Johnson",
-    profession: "mathematician",
-  },
-  {
-    id: 1,
-    name: "Mario José Molina-Pasquel Henríquez",
-    profession: "chemist",
-  },
-  {
-    id: 2,
-    name: "Mohammad Abdus Salam",
-    profession: "physicist",
-  },
-  {
-    id: 3,
-    name: "Percy Lavon Julian",
-    profession: "chemist",
-  },
-  {
-    id: 4,
-    name: "Subrahmanyan Chandrasekhar",
-    profession: "astrophysicist",
-  },
-];
-
-export default function App() {
-  return (
-    <div>
-      {people
-        .filter((person) => person.profession != "chemist")
-        .map((person, index) => {
-          return (
-            <div key={index} style={{ display: "flex" }}>
-              <p>{person.name} : </p>
-              <p>{person.profession}</p>
-            </div>
-          );
-        })}
-    </div>
-  );
-}
+// const people = [
+//   {
+//     id: 0,
+//     name: "Creola Katherine Johnson",
+//     profession: "mathematician",
+//   },
+//   {
+//     id: 1,
+//     name: "Mario José Molina-Pasquel Henríquez",
+//     profession: "chemist",
+//   },
+//   {
+//     id: 2,
+//     name: "Mohammad Abdus Salam",
+//     profession: "physicist",
+//   },
+//   {
+//     id: 3,
+//     name: "Percy Lavon Julian",
+//     profession: "chemist",
+//   },
+//   {
+//     id: 4,
+//     name: "Subrahmanyan Chandrasekhar",
+//     profession: "astrophysicist",
+//   },
+// ];
+//
+// export default function App() {
+//   return (
+//     <div>
+//       {people
+//         .filter((person) => person.profession != "chemist")
+//         .map((person, index) => {
+//           return (
+//             <div key={index} style={{ display: "flex" }}>
+//               <p>{person.name} : </p>
+//               <p>{person.profession}</p>
+//             </div>
+//           );
+//         })}
+//     </div>
+//   );
+// }
 
 // export default function App() {
 //   return (
@@ -469,3 +469,153 @@ export default function App() {
 //     </ol>
 //   );
 // }
+// import React from "react";
+// import { people } from "./data";
+//
+// const App = () => {
+//   return (
+//     <div>
+//       <h1>Chemists</h1>
+//       {people
+//         .filter((person) => person.profession === "chemist")
+//         .map((person) => (
+//           <div key={person.id}>
+//             <p>{person.name}</p>
+//             <p>{person.profession}</p>
+//             <p>{person.accomplishment}</p>
+//           </div>
+//         ))}
+//       <h1>Other Professions</h1>
+//       {people
+//         .filter((person) => person.profession !== "chemist")
+//         .map((person) => {
+//           return (
+//             <div key={person.id}>
+//               <p>{person.name}</p>
+//               <p>{person.profession}</p>
+//               <p>{person.accomplishment}</p>
+//             </div>
+//           );
+//         })}
+//     </div>
+//   );
+// };
+//
+// export default App;
+// import { recipes } from "./data";
+// import React from "react";
+//
+// function App() {
+//   return (
+//     <div>
+//       {recipes.map((recipe) => (
+//         <div key={recipe.id}>
+//           <h2>{recipe.name}</h2>
+//           <ul>
+//             {recipe.ingredients.map((ingredient, index) => (
+//               <li key={`${recipe.id}-${index}`}>{ingredient}</li>
+//             ))}
+//           </ul>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
+//
+// export default App;
+// import { recipes } from "./data";
+// function Recipe({ id, name, ingredients }) {
+//   return (
+//     <div>
+//       <h2>{name}</h2>
+//       {ingredients.map((ingredient, index) => (
+//         <li key={index}>{ingredient}</li>
+//       ))}
+//     </div>
+//   );
+// }
+//
+// export default function RecipeList() {
+//   return (
+//     <div>
+//       {recipes.map((recipe) => (
+//         <Recipe
+//           key={recipe.id}
+//           id={recipe.id}
+//           name={recipe.name}
+//           ingredients={recipe.ingredients}
+//         />
+//       ))}
+//     </div>
+//   );
+// }
+// const poem = {
+//   lines: [
+//     "I write, erase, rewrite",
+//     "Erase again, and then",
+//     "A poppy blooms.",
+//   ],
+// };
+//
+// export default function Poem() {
+//   return (
+//     <article>
+//       {poem.lines.map((line, index) => (
+//         <div key={index}>
+//           <p>{line}</p>
+//           <hr />
+//         </div>
+//       ))}
+//     </article>
+//   );
+// }
+// let guest = 0;
+
+// function Cup({ guest }) {
+//   return <h2>Tea cup for guest #{guest}</h2>;
+// }
+//
+// export default function TeaSet() {
+//   return (
+//     <div>
+//       <Cup guest={4} />
+//       <Cup guest={5} />
+//       <Cup guest={2} />
+//       <Cup guest={1} />
+//     </div>
+//   );
+// }
+// function Cup({ guest }) {
+//   return <h2>Tea cup for guest #{guest}</h2>;
+// }
+//
+// export default function App() {
+//   let cups = [];
+//
+//   for (let i = 1; i <= 12; i++) {
+//     cups.push(<Cup key={i} guest={i} />);
+//   }
+//   return cups;
+// }
+
+// export default function Clock() {
+//   let time = new Date();
+//   let hours = time.getHours();
+//   if (hours >= 0 && hours <= 6) {
+//     document.getElementById("time").className = "night";
+//   } else {
+//     document.getElementById("time").className = "day";
+//   }
+//   return <h1 id="time">{time.toLocaleTimeString()}</h1>;
+// }
+export default function Clock() {
+  const time = new Date().getHours();
+  console.log(time);
+  let timeOfDay = "";
+  if (time > 6) {
+    timeOfDay = <p className="day">{time}</p>;
+  } else {
+    timeOfDay = <h1 className="night">{time}</h1>;
+  }
+  return timeOfDay;
+}
