@@ -608,14 +608,101 @@ import Avatar from "./Avatar";
 //   }
 //   return <h1 id="time">{time.toLocaleTimeString()}</h1>;
 // }
-export default function Clock() {
-  const time = new Date().getHours();
-  console.log(time);
-  let timeOfDay = "";
-  if (time > 6) {
-    timeOfDay = <p className="day">{time}</p>;
-  } else {
-    timeOfDay = <h1 className="night">{time}</h1>;
+// export default function Clock() {
+//   const time = new Date().getHours();
+//   console.log(time);
+//   let timeOfDay = "";
+//   if (time > 6) {
+//     timeOfDay = <p className="day">{time}</p>;
+//   } else {
+//     timeOfDay = <h1 className="night">{time}</h1>;
+//   }
+//   return timeOfDay;
+// }
+
+// const poem = {
+//   lines: [
+//     "I write, erase, rewrite",
+//     "Erase again, and then",
+//     "A poppy blooms.",
+//   ],
+// };
+//
+// export default function Poem() {
+//   return (
+//     <article>
+//       {poem.lines.map((line, index) => {
+//         return (
+//           <>
+//             <p key={index}>{line}</p>
+//             {index < poem.lines.length - 1 && <hr />}
+//           </>
+//         );
+//       })}
+//     </article>
+//   );
+// }
+
+// import Profile from "./Profile";
+//
+// export default function App() {
+//   return (
+//     <>
+//       <Profile
+//         person={{
+//           imageId: "lrWQx8l",
+//           name: "Subrahmanyan Chandrasekhar",
+//         }}
+//       />
+//       <Profile
+//         person={{
+//           imageId: "MK3eW3A",
+//           name: "Creola Katherine Johnson",
+//         }}
+//       />
+//     </>
+//   );
+// }
+
+import { useState, useEffect } from "react";
+import StoryTray from "./StoryTray";
+
+let initialStories = [
+  { id: 0, label: "Ankit's Story" },
+  { id: 1, label: "Taylor's Story" },
+];
+
+export default function App() {
+  let [stories, setStories] = useState([...initialStories]);
+  let time = useTime();
+
+  // HACK: Prevent the memory from growing forever while you read docs.
+  // We're breaking our own rules here.
+  if (stories.length > 100) {
+    stories.length = 100;
   }
-  return timeOfDay;
+
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        textAlign: "center",
+      }}
+    >
+      <h2>It is {time.toLocaleTimeString()} now.</h2>
+      <StoryTray stories={stories} setStories={setStories} />
+    </div>
+  );
+}
+
+function useTime() {
+  const [time, setTime] = useState(() => new Date());
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+    return () => clearInterval(id);
+  }, []);
+  return time;
 }
