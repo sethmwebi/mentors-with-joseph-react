@@ -664,45 +664,82 @@ import Avatar from "./Avatar";
 //   );
 // }
 
-import { useState, useEffect } from "react";
-import StoryTray from "./StoryTray";
+// import { useState, useEffect } from "react";
+// import StoryTray from "./StoryTray";
+//
+// let initialStories = [
+//   { id: 0, label: "Ankit's Story" },
+//   { id: 1, label: "Taylor's Story" },
+// ];
+//
+// export default function App() {
+//   let [stories, setStories] = useState([...initialStories]);
+//   let time = useTime();
+//
+//   // HACK: Prevent the memory from growing forever while you read docs.
+//   // We're breaking our own rules here.
+//   if (stories.length > 100) {
+//     stories.length = 100;
+//   }
+//
+//   return (
+//     <div
+//       style={{
+//         width: "100%",
+//         height: "100%",
+//         textAlign: "center",
+//       }}
+//     >
+//       <h2>It is {time.toLocaleTimeString()} now.</h2>
+//       <StoryTray stories={stories} setStories={setStories} />
+//     </div>
+//   );
+// }
+//
+// function useTime() {
+//   const [time, setTime] = useState(() => new Date());
+//   useEffect(() => {
+//     const id = setInterval(() => {
+//       setTime(new Date());
+//     }, 1000);
+//     return () => clearInterval(id);
+//   }, []);
+//   return time;
+// }
+// import React from "react";
+// import Toolbar from "./toolbar";
+//
+// export default function App() {
+//   return (
+//     <Toolbar
+//       onPlayMOvie={() => alert("playing")}
+//       onUploadImage={() => alert("Uploading!")}
+//     />
+//   );
+// }
+import React from "react";
 
-let initialStories = [
-  { id: 0, label: "Ankit's Story" },
-  { id: 1, label: "Taylor's Story" },
-];
-
-export default function App() {
-  let [stories, setStories] = useState([...initialStories]);
-  let time = useTime();
-
-  // HACK: Prevent the memory from growing forever while you read docs.
-  // We're breaking our own rules here.
-  if (stories.length > 100) {
-    stories.length = 100;
-  }
-
+const App = () => {
   return (
     <div
+      onMouseEnter={() => console.log("You hovered over my territory")}
+      onMouseLeave={() => console.log("Oh no you left!")}
       style={{
-        width: "100%",
-        height: "100%",
-        textAlign: "center",
+        height: "450px",
+        width: "450px",
+        background: "black",
+        color: "white",
       }}
     >
-      <h2>It is {time.toLocaleTimeString()} now.</h2>
-      <StoryTray stories={stories} setStories={setStories} />
+      <button
+        onClick={() => {
+          console.log("hey Mr Donald");
+        }}
+      >
+        click to log greeting
+      </button>
     </div>
   );
-}
+};
 
-function useTime() {
-  const [time, setTime] = useState(() => new Date());
-  useEffect(() => {
-    const id = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-    return () => clearInterval(id);
-  }, []);
-  return time;
-}
+export default App;
