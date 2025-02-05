@@ -187,6 +187,7 @@
 // };
 //
 // export default App;
+import { useState } from "react";
 import "./App.css";
 import Avatar from "./Avatar";
 // function Avatar({ className, src, alt, width, height }) {
@@ -765,26 +766,182 @@ import Avatar from "./Avatar";
 //     </div>
 //   );
 // }
-function Button({ onClick, children }) {
-  return <button onClick={onClick}>{children}</button>;
-}
+// function Button({ onClick, children }) {
+//   return <button onClick={onClick}>{children}</button>;
+// }
+//
+// function PlayButton({ movieName }) {
+//   function handlePlayClick() {
+//     alert(`Playing ${movieName}`);
+//   }
+//   return <Button onClick={handlePlayClick}>Play "{movieName}"</Button>;
+// }
+//
+// function UploadButton() {
+//   return <Button onClick={() => alert("uploading")}>Upload Image</Button>;
+// }
+//
+// export default function Toolbar() {
+//   return (
+//     <div>
+//       <PlayButton movieName="Kiki's Delivery Service" />
+//       <UploadButton />
+//     </div>
+//   );
+// }
 
-function PlayButton({ movieName }) {
-  function handlePlayClick() {
-    alert(`Playing ${movieName}`);
+// state - temporal component memory storage
+
+// import { sculptureList } from "./data.js";
+// import { useState } from "react";
+//
+// // useEffect // useRef // useTransition // useState
+//
+// export default function Gallery() {
+//   //let index = 0
+//   const [index, setIndex] = useState(11);
+//   function handleClick() {
+//
+//     setIndex((prev) => prev - 1);
+//   }
+//
+//   let sculpture = sculptureList[index];
+//   return (
+//     <>
+//       <button onClick={handleClick}>Prev</button>
+//       <h2>
+//         <i>{sculpture?.name} </i>
+//         by {sculpture.artist}
+//       </h2>
+//       <h3>
+//         ({index} of {sculptureList.length})
+//       </h3>
+//       <img src={sculpture.url} alt={sculpture.alt} />
+//       <p>{sculpture.description}</p>
+//     </>
+//   );
+// }
+
+// import { useState } from "react";
+// import { sculptureList } from "./data.js";
+//
+// function Gallery() {
+//   const [index, setIndex] = useState(0);
+//   // const [showMore, setShowMore] = useState(false);
+//   const [showMoreDetails, setShowMoreDetails] = useState(false);
+//
+//   function handleNextClick() {
+//     setIndex(index + 1);
+//   }
+//
+//   function handleMoreClick() {
+//     setShowMoreDetails(!showMoreDetails);
+//   }
+//
+//   let sculpture = sculptureList[index];
+//   return (
+//     <>
+//       <button onClick={handleNextClick}>Next</button>
+//       <h2>
+//         <i>{sculpture.name} </i>
+//         by {sculpture.artist}
+//       </h2>
+//       <h3>
+//         ({index + 1} of {sculptureList.length})
+//       </h3>
+//
+//       <img src={sculpture.url} alt={sculpture.alt} />
+//       <button onClick={handleMoreClick}>
+//         {showMoreDetails ? "Hide" : "Show"} details
+//       </button>
+//       {showMoreDetails && <p>{sculpture.description}</p>}
+//     </>
+//   );
+// }
+//
+// const App = () => {
+//   return (
+//     <div>
+//       <Gallery /> <Gallery />
+//     </div>
+//   );
+// };
+//
+// export default App;
+
+// import { useState } from "react";
+// import { sculptureList } from "./data.js";
+//
+// export default function Gallery() {
+//   const [index, setIndex] = useState(0);
+//   const [showMore, setShowMore] = useState(false);
+//
+//   function handleNextClick() {
+//     setIndex(index + 1);
+//   }
+//
+//   function handleMoreClick() {
+//     setShowMore(!showMore);
+//   }
+//
+//   let sculpture = sculptureList[index];
+//   return (
+//     <>
+//       <button
+//         disabled={index > sculptureList.length - 2}
+//         onClick={handleNextClick}
+//       >
+//         Next
+//       </button>
+//       <h2>
+//         <i>{sculpture.name} </i>
+//         by {sculpture.artist}
+//       </h2>
+//       <h3>
+//         ({index + 1} of {sculptureList.length})
+//       </h3>
+//       <button onClick={handleMoreClick}>
+//         {showMore ? "Hide" : "Show"} details
+//       </button>
+//       {showMore && <p>{sculpture.description}</p>}
+//       <img src={sculpture.url} alt={sculpture.alt} />
+//     </>
+//   );
+// }
+
+export default function Form() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+
+  function handleFirstNameChange(e) {
+    setFirstName(e.target.value);
   }
-  return <Button onClick={handlePlayClick}>Play "{movieName}"</Button>;
-}
 
-function UploadButton() {
-  return <Button onClick={() => alert("uploading")}>Upload Image</Button>;
-}
+  function handleLastNameChange(e) {
+    setLastName(e.target.value);
+  }
 
-export default function Toolbar() {
+  function handleReset() {
+    setFirstName("");
+    setLastName("");
+  }
+
   return (
-    <div>
-      <PlayButton movieName="Kiki's Delivery Service" />
-      <UploadButton />
-    </div>
+    <form onSubmit={(e) => e.preventDefault()}>
+      <input
+        placeholder="First name"
+        value={firstName}
+        onChange={handleFirstNameChange}
+      />
+      <input
+        placeholder="Last name"
+        value={lastName}
+        onChange={handleLastNameChange}
+      />
+      <h1>
+        {(firstName !== "" || lastName !== "") && `Hi,`} {firstName} {lastName}
+      </h1>
+      <button onClick={handleReset}>Reset</button>
+    </form>
   );
 }
