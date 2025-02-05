@@ -717,29 +717,74 @@ import Avatar from "./Avatar";
 //     />
 //   );
 // }
-import React from "react";
+// import React from "react";
+//
+// const App = () => {
+//   return (
+//     <div
+//       onMouseEnter={() => console.log("You hovered over my territory")}
+//       onMouseLeave={() => console.log("Oh no you left!")}
+//       style={{
+//         height: "450px",
+//         width: "450px",
+//         background: "black",
+//         color: "white",
+//       }}
+//     >
+//       <button
+//         onClick={() => {
+//           console.log("hey Mr Donald");
+//         }}
+//       >
+//         click to log greeting
+//       </button>
+//     </div>
+//   );
+// };
+//
+// export default App;
+// import React from "react";
+//
+// const Button = () => {
+//   function handleClick(name) {
+//     console.log(`I was clicked by ${name}`);
+//   }
+//   return <button onClick={() => handleClick("Jane")}>Click Me</button>;
+// };
+//
+// export default Button;
+// function AlertButton({ message, children }) {
+//   return <button onClick={() => alert(message)}>{children}</button>;
+// }
+//
+// export default function Toolbar() {
+//   return (
+//     <div>
+//       <AlertButton message="Playing">Play Movie</AlertButton>
+//       <AlertButton message="Uploading">Upload Image</AlertButton>
+//     </div>
+//   );
+// }
+function Button({ onClick, children }) {
+  return <button onClick={onClick}>{children}</button>;
+}
 
-const App = () => {
+function PlayButton({ movieName }) {
+  function handlePlayClick() {
+    alert(`Playing ${movieName}`);
+  }
+  return <Button onClick={handlePlayClick}>Play "{movieName}"</Button>;
+}
+
+function UploadButton() {
+  return <Button onClick={() => alert("uploading")}>Upload Image</Button>;
+}
+
+export default function Toolbar() {
   return (
-    <div
-      onMouseEnter={() => console.log("You hovered over my territory")}
-      onMouseLeave={() => console.log("Oh no you left!")}
-      style={{
-        height: "450px",
-        width: "450px",
-        background: "black",
-        color: "white",
-      }}
-    >
-      <button
-        onClick={() => {
-          console.log("hey Mr Donald");
-        }}
-      >
-        click to log greeting
-      </button>
+    <div>
+      <PlayButton movieName="Kiki's Delivery Service" />
+      <UploadButton />
     </div>
   );
-};
-
-export default App;
+}
