@@ -187,8 +187,8 @@
 // };
 //
 // export default App;
-import { useState } from "react";
-import "./App.css";
+// import { useState } from "react";
+// import "./App.css";
 import Avatar from "./Avatar";
 // function Avatar({ className, src, alt, width, height }) {
 //   return (
@@ -909,39 +909,198 @@ import Avatar from "./Avatar";
 //   );
 // }
 
-export default function Form() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+// export default function Form() {
+//   const [firstName, setFirstName] = useState("");
+//   const [lastName, setLastName] = useState("");
+//
+//   function handleFirstNameChange(e) {
+//     setFirstName(e.target.value);
+//   }
+//
+//   function handleLastNameChange(e) {
+//     setLastName(e.target.value);
+//   }
+//
+//   function handleReset() {
+//     setFirstName("");
+//     setLastName("");
+//   }
+//
+//   return (
+//     <form onSubmit={(e) => e.preventDefault()}>
+//       <input
+//         placeholder="First name"
+//         value={firstName}
+//         onChange={handleFirstNameChange}
+//       />
+//       <input
+//         placeholder="Last name"
+//         value={lastName}
+//         onChange={handleLastNameChange}
+//       />
+//       <h1>
+//         {(firstName !== "" || lastName !== "") && `Hi,`} {firstName} {lastName}
+//       </h1>
+//       <button onClick={handleReset}>Reset</button>
+//     </form>
+//   );
+// }
+// import React from "react";
+//
+// export default function Form() {
+//   const [isSent, setIsSent] = useState(false);
+//   const [message, setMessage] = useState("");
+//
+//   if (isSent) {
+//     return <h1>Your message is on its way</h1>;
+//   }
+//   return (
+//     <form
+//       onSubmit={(e) => {
+//         e.preventDefault();
+//         setIsSent(true);
+//         sendMessage(message);
+//       }}
+//       style={{
+//         display: "flex",
+//         flexDirection: "column",
+//         gap: "4px",
+//         width: "fit-content",
+//       }}
+//     >
+//       <textarea
+//         placeholder="Message"
+//         value={message}
+//         onChange={(e) => setMessage(e.target.value)}
+//       />
+//       <button style={{ width: "fit-content" }} type="submit">
+//         Send
+//       </button>
+//     </form>
+//   );
+// }
+//
+// function sendMessage(message) {
+//   console.log(message);
+// }
 
-  function handleFirstNameChange(e) {
-    setFirstName(e.target.value);
+// import { useState } from "react";
+//
+// export default function Counter() {
+//   const [number, setNumber] = useState(0);
+//   const [message, setMessage] = useState("Donald");
+//   const [isButtonClicked, setIsButtonClicked] = useState(false);
+//
+//   return (
+//     <>
+//       <h1>{number}</h1>
+//       <button
+//         onClick={() => {
+//           setNumber(number + 1);
+//           setNumber(number + 1);
+//           setNumber(number + 1);
+//           setIsButtonClicked(true);
+//           setIsButtonClicked(false);
+//         }}
+//       >
+//         +3
+//       </button>
+//       {isButtonClicked && <p>{message}</p>}
+//     </>
+//   );
+// }
+
+// import { useState } from "react";
+//
+// export default function Counter() {
+//   const [number, setNumber] = useState(0);
+//
+//   return (
+//     <>
+//       <h1>{number}</h1>
+//       <button
+//         onClick={() => {
+//           setNumber(number + 5);
+//           alert(number);
+//         }}
+//       >
+//         +5
+//       </button>
+//     </>
+//   );
+// }
+
+// import { useState } from "react";
+//
+// export default function Form() {
+//   const [to, setTo] = useState("Alice");
+//   const [message, setMessage] = useState("Hello");
+//
+//   function handleSubmit(e) {
+//     e.preventDefault();
+//     setTimeout(() => {
+//       alert(`You said ${message} to ${to}`);
+//     }, 5000);
+//   }
+//
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <label>
+//         To:{" "}
+//         <select value={to} onChange={(e) => setTo(e.target.value)}>
+//           <option value="Alice">Alice</option>
+//           <option value="Bob">Bob</option>
+//         </select>
+//       </label>
+//       <textarea
+//         placeholder="Message"
+//         value={message}
+//         onChange={(e) => setMessage(e.target.value)}
+//       />
+//       <button type="submit">Send</button>
+//     </form>
+//   );
+// }
+
+// import { useState } from "react";
+//
+// export default function FeedbackForm() {
+//   const [isSent, setIsSent] = useState(false);
+//   const [message, setMessage] = useState("");
+//   if (isSent) {
+//     return <h1>Thank you!</h1>;
+//   } else {
+//     // eslint-disable-next-line
+//     return (
+//       <form
+//         onSubmit={(e) => {
+//           e.preventDefault();
+//           alert(`Sending: "${message}"`);
+//           setIsSent(true);
+//         }}
+//       >
+//         <textarea
+//           placeholder="Message"
+//           value={message}
+//           onChange={(e) => setMessage(e.target.value)}
+//         />
+//         <br />
+//         <button type="submit">Send</button>
+//       </form>
+//     );
+//   }
+// }
+
+import { useState } from "react";
+
+export default function FeedbackForm() {
+  const [name, setName] = useState("");
+
+  function handleClick() {
+    prompt("What is your name?");
+    setName(name);
+    alert(`Hello, ${name}!`);
   }
 
-  function handleLastNameChange(e) {
-    setLastName(e.target.value);
-  }
-
-  function handleReset() {
-    setFirstName("");
-    setLastName("");
-  }
-
-  return (
-    <form onSubmit={(e) => e.preventDefault()}>
-      <input
-        placeholder="First name"
-        value={firstName}
-        onChange={handleFirstNameChange}
-      />
-      <input
-        placeholder="Last name"
-        value={lastName}
-        onChange={handleLastNameChange}
-      />
-      <h1>
-        {(firstName !== "" || lastName !== "") && `Hi,`} {firstName} {lastName}
-      </h1>
-      <button onClick={handleReset}>Reset</button>
-    </form>
-  );
+  return <button onClick={handleClick}>Greet</button>;
 }
