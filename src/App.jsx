@@ -1091,16 +1091,118 @@ import Avatar from "./Avatar";
 //   }
 // }
 
+// import { useState } from "react";
+//
+// export default function FeedbackForm() {
+//   const [name, setName] = useState("");
+//
+//   function handleClick() {
+//     prompt("What is your name?");
+//     setName(name);
+//     alert(`Hello, ${name}!`);
+//   }
+//
+//   return <button onClick={handleClick}>Greet</button>;
+// }
+// import React, { useState } from "react";
+//
+// const App = () => {
+//   const [profile, setProfile] = useState({ name: "John", age: 25 });
+//
+//   return (
+//     <div>
+//       <input
+//         type="text"
+//         value={profile.name}
+//         onChange={(e) => setProfile({ ...profile, name: e.target.value })}
+//       />
+//       <input
+//         type="number"
+//         value={profile.age}
+//         onChange={(e) => setProfile({ ...profile, age: e.target.value })}
+//       />
+//     </div>
+//   );
+// };
+//
+// export default App;
+// import React, { useState } from "react";
+//
+// const App = () => {
+//   const [person, setPerson] = useState({
+//     name: "Niki de Saint Phalle",
+//     artwork: {
+//       title: "Blue Nana",
+//       city: "Hamburg",
+//       image: "https://i.imgur.com/Sd1AgUOm.jpg",
+//     },
+//   });
+//
+//   return (
+//     <div>
+//       <h1>Updating Nested Objects</h1>
+//       <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+//         <h4>{person.name}</h4>
+//         <h5>{person.artwork.city}</h5>
+//       </div>
+//
+//       <input
+//         type="text"
+//         value={person.artwork.city}
+//         onChange={(event) =>
+//           setPerson({
+//             ...person,
+//             artwork: { ...person.artwork, city: event.target.value },
+//           })
+//         }
+//       />
+//     </div>
+//   );
+// };
+//
+// export default App;
+
 import { useState } from "react";
 
-export default function FeedbackForm() {
-  const [name, setName] = useState("");
+export default function Scoreboard() {
+  const [player, setPlayer] = useState({
+    firstName: "Ranjani",
+    lastName: "Shettar",
+    score: 10,
+  });
 
-  function handleClick() {
-    prompt("What is your name?");
-    setName(name);
-    alert(`Hello, ${name}!`);
+  function handlePlusClick() {
+    setPlayer({ ...player, score: player.score + 1 });
   }
 
-  return <button onClick={handleClick}>Greet</button>;
+  function handleFirstNameChange(e) {
+    setPlayer({
+      ...player,
+      firstName: e.target.value,
+    });
+  }
+
+  function handleLastNameChange(e) {
+    setPlayer({
+      ...player,
+      lastName: e.target.value,
+    });
+  }
+
+  return (
+    <>
+      <label>
+        Score: <b>{player.score}</b>{" "}
+        <button onClick={handlePlusClick}>+1</button>
+      </label>
+      <label>
+        First name: {player.firstName}
+        <input value={player.firstName} onChange={handleFirstNameChange} />
+      </label>
+      <label>
+        Last name: {player.lastName}
+        <input value={player.lastName} onChange={handleLastNameChange} />
+      </label>
+    </>
+  );
 }
