@@ -189,6 +189,7 @@
 // export default App;
 // import { useState } from "react";
 // import "./App.css";
+import { useState } from "react";
 import Avatar from "./Avatar";
 // function Avatar({ className, src, alt, width, height }) {
 //   return (
@@ -1162,47 +1163,138 @@ import Avatar from "./Avatar";
 //
 // export default App;
 
-import { useState } from "react";
+// import { useState } from "react";
+//
+// export default function Scoreboard() {
+//   const [player, setPlayer] = useState({
+//     firstName: "Ranjani",
+//     lastName: "Shettar",
+//     score: 10,
+//   });
+//
+//   function handlePlusClick() {
+//     setPlayer({ ...player, score: player.score + 1 });
+//   }
+//
+//   function handleFirstNameChange(e) {
+//     setPlayer({
+//       ...player,
+//       firstName: e.target.value,
+//     });
+//   }
+//
+//   function handleLastNameChange(e) {
+//     setPlayer({
+//       ...player,
+//       lastName: e.target.value,
+//     });
+//   }
+//
+//   return (
+//     <>
+//       <label>
+//         Score: <b>{player.score}</b>{" "}
+//         <button onClick={handlePlusClick}>+1</button>
+//       </label>
+//       <label>
+//         First name: {player.firstName}
+//         <input value={player.firstName} onChange={handleFirstNameChange} />
+//       </label>
+//       <label>
+//         Last name: {player.lastName}
+//         <input value={player.lastName} onChange={handleLastNameChange} />
+//       </label>
+//     </>
+//   );
+// }
 
-export default function Scoreboard() {
-  const [player, setPlayer] = useState({
-    firstName: "Ranjani",
-    lastName: "Shettar",
-    score: 10,
-  });
+// export default function Form({
+//   // Try 'submitting', 'error', 'success':
+//   status = "success",
+// }) {
+//   if (status === "success") {
+//     return <h1>That's right!</h1>;
+//   }
+//   return (
+//     <>
+//       <h2>City quiz</h2>
+//       <p>
+//         In which city is there a billboard that turns air into drinkable water?
+//       </p>
+//       <form>
+//         <textarea disabled={status === "submitting"} />
+//         <br />
+//         <button disabled={status === "empty" || status === "submitting"}>
+//           Submit
+//         </button>
+//         {status === "error" && (
+//           <p className="Error">Good guess but a wrong answer. Try again!</p>
+//         )}
+//       </form>
+//     </>
+//   );
+// }
+export default function Form() {
+  const [isEmpty, setIsEmpty] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [message, setMessage] = useState("");
 
-  function handlePlusClick() {
-    setPlayer({ ...player, score: player.score + 1 });
-  }
-
-  function handleFirstNameChange(e) {
-    setPlayer({
-      ...player,
-      firstName: e.target.value,
-    });
-  }
-
-  function handleLastNameChange(e) {
-    setPlayer({
-      ...player,
-      lastName: e.target.value,
-    });
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSuccess(prev => !prev);
+    console.log(isSuccess);
+    if (firstname !== "" && lastname !== "" && message !== "") {
+      setIsEmpty(false);
+    }
+    if (firstname === "" || lastname === "" || message === "") {
+      setIsError(true);
+    }
+  };
 
   return (
     <>
-      <label>
-        Score: <b>{player.score}</b>{" "}
-        <button onClick={handlePlusClick}>+1</button>
-      </label>
-      <label>
-        First name: {player.firstName}
-        <input value={player.firstName} onChange={handleFirstNameChange} />
-      </label>
-      <label>
-        Last name: {player.lastName}
-        <input value={player.lastName} onChange={handleLastNameChange} />
-      </label>
+      {isError && <p style={{ color: "red" }}>An error occurred</p>}
+      {isSuccess && (
+        <p style={{ color: "green" }}>You successfully submitted the form</p>
+      )}
+      <form
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "4px",
+          width: "fit-content",
+        }}
+        onSubmit={handleSubmit}
+      >
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <label htmlFor="firstname">First Name</label>
+          <input
+            type="text"
+            id="firstname"
+            onChange={(e) => setFirstname(e.target.value)}
+          />
+        </div>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <label htmlFor="lastname">Last Name</label>
+          <input
+            type="text"
+            id="lastname"
+            onChange={(e) => setLastname(e.target.value)}
+          />
+        </div>
+        <textarea
+          placeholder="Enter your message..."
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+        <button type="submit" style={{ width: "fit-content" }}>
+          submit
+        </button>
+      </form>
     </>
   );
 }
